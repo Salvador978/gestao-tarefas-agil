@@ -20,9 +20,6 @@ Para este projeto, utilizaremos a metodologia ágil **Kanban**. A gestão das ta
 * **Em Progresso (In Progress)**
 * **Concluído (Done)**
 
----
-*(Esta seção será atualizada posteriormente)*
----
 
 ## 4. Simulação de Mudança de Escopo
 
