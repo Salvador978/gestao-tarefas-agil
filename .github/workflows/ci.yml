@@ -1,0 +1,28 @@
+name: Java CI with Maven
+
+# Aciona o workflow em pushes para a branch 'main'
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # O tipo de máquina que o workflow rodará
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Puxa o seu código do repositório
+      - uses: actions/checkout@v3
+
+      # 2. Configura o ambiente Java (JDK 17)
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      # 3. Roda o comando 'test' do Maven
+      # O Maven irá automaticamente baixar o JUnit, compilar seu código e rodar os testes.
+      - name: Build and Test with Maven
+        run: mvn test
