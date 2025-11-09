@@ -20,17 +20,19 @@ public class TarefaServiceTest {
 
     @Test
     public void testCriarTarefa() {
-        Tarefa tarefa = service.criarTarefa("Título Teste", "Descrição Teste");
+        // ATUALIZADO: Adiciona prioridade "Alta"
+        Tarefa tarefa = service.criarTarefa("Título Teste", "Descrição Teste", "Alta");
         
         assertNotNull(tarefa); // Verifica se a tarefa não é nula
         assertEquals(1, tarefa.getId()); // Verifica se o ID é 1
         assertEquals("Título Teste", tarefa.getTitulo());
+        assertEquals("Alta", tarefa.getPrioridade()); // NOVO TESTE: Verifica a prioridade
     }
 
     @Test
     public void testListarTarefas() {
-        service.criarTarefa("Tarefa 1", "Desc 1");
-        service.criarTarefa("Tarefa 2", "Desc 2");
+        service.criarTarefa("Tarefa 1", "Desc 1", "Baixa");
+        service.criarTarefa("Tarefa 2", "Desc 2", "Média");
 
         List<Tarefa> tarefas = service.listarTarefas();
         
@@ -40,7 +42,7 @@ public class TarefaServiceTest {
 
     @Test
     public void testObterTarefaPorId() {
-        service.criarTarefa("Tarefa 1", "Desc 1");
+        service.criarTarefa("Tarefa 1", "Desc 1", "Alta");
         Tarefa tarefa = service.obterTarefaPorId(1);
 
         assertNotNull(tarefa);
@@ -55,21 +57,22 @@ public class TarefaServiceTest {
 
     @Test
     public void testAtualizarTarefa() {
-        service.criarTarefa("Título Antigo", "Desc Antiga");
+        service.criarTarefa("Título Antigo", "Desc Antiga", "Baixa");
         
-        // Atualiza a tarefa de ID 1
-        boolean sucesso = service.atualizarTarefa(1, "Título Novo", "Desc Nova", true);
+        // ATUALIZADO: Atualiza a tarefa de ID 1, incluindo a nova prioridade
+        boolean sucesso = service.atualizarTarefa(1, "Título Novo", "Desc Nova", "Urgente", true);
         
         assertTrue(sucesso); // Verifica se a atualização retornou sucesso
         
         Tarefa tarefaAtualizada = service.obterTarefaPorId(1);
         assertEquals("Título Novo", tarefaAtualizada.getTitulo());
+        assertEquals("Urgente", tarefaAtualizada.getPrioridade()); // NOVO TESTE: Verifica a prioridade
         assertTrue(tarefaAtualizada.isConcluida()); // Verifica se marcou como concluída
     }
 
     @Test
     public void testDeletarTarefa() {
-        service.criarTarefa("Tarefa para deletar", "...");
+        service.criarTarefa("Tarefa para deletar", "...", "Baixa");
         
         boolean sucesso = service.deletarTarefa(1);
         
