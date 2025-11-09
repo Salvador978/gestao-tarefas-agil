@@ -4,13 +4,15 @@ public class Tarefa {
     private String titulo;
     private String descricao;
     private boolean concluida;
+    private String prioridade; // <-- NOVA LINHA
 
-    // Construtor
-    public Tarefa(int id, String titulo, String descricao) {
+    // Construtor ATUALIZADO
+    public Tarefa(int id, String titulo, String descricao, String prioridade) { // <-- MUDANÇA AQUI
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
-        this.concluida = false; // Tarefas começam como não concluídas
+        this.concluida = false;
+        this.prioridade = prioridade; // <-- NOVA LINHA
     }
 
     // Getters e Setters
@@ -42,8 +44,19 @@ public class Tarefa {
         this.concluida = concluida;
     }
 
+    // Getter e Setter para Prioridade (NOVOS)
+    public String getPrioridade() {
+        return prioridade;
+    }
+
+    public void setPrioridade(String prioridade) {
+        this.prioridade = prioridade;
+    }
+
+
     @Override
     public String toString() {
-        return "Tarefa [id=" + id + ", titulo=" + titulo + ", concluida=" + concluida + "]";
+        // ATUALIZADO para incluir prioridade
+        return "Tarefa [id=" + id + ", titulo=" + titulo + ", prioridade=" + prioridade + ", concluida=" + concluida + "]";
     }
 }
