@@ -13,13 +13,13 @@ public class TarefaService {
     }
 
     /**
-     * CREATE (Criar)
-     * Adiciona uma nova tarefa à lista.
+     * CREATE (Criar) - ATUALIZADO
+     * Adiciona uma nova tarefa à lista, agora com prioridade.
      */
-    public Tarefa criarTarefa(String titulo, String descricao) {
-        Tarefa novaTarefa = new Tarefa(proximoId, titulo, descricao);
+    public Tarefa criarTarefa(String titulo, String descricao, String prioridade) { // <-- MUDANÇA AQUI
+        Tarefa novaTarefa = new Tarefa(proximoId, titulo, descricao, prioridade); // <-- MUDANÇA AQUI
         this.tarefas.add(novaTarefa);
-        this.proximoId++; // Incrementa o ID para a próxima tarefa
+        this.proximoId++;
         return novaTarefa;
     }
 
@@ -45,14 +45,15 @@ public class TarefaService {
     }
 
     /**
-     * UPDATE (Atualizar)
-     * Atualiza os dados de uma tarefa existente.
+     * UPDATE (Atualizar) - ATUALIZADO
+     * Atualiza os dados de uma tarefa existente, incluindo prioridade.
      */
-    public boolean atualizarTarefa(int id, String novoTitulo, String novaDescricao, boolean concluida) {
+    public boolean atualizarTarefa(int id, String novoTitulo, String novaDescricao, String novaPrioridade, boolean concluida) { // <-- MUDANÇA AQUI
         Tarefa tarefa = obterTarefaPorId(id);
         if (tarefa != null) {
             tarefa.setTitulo(novoTitulo);
             tarefa.setDescricao(novaDescricao);
+            tarefa.setPrioridade(novaPrioridade); // <-- NOVA LINHA
             tarefa.setConcluida(concluida);
             return true; // Sucesso
         }
