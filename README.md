@@ -22,6 +22,12 @@ Para este projeto, utilizaremos a metodologia ágil **Kanban**. [cite_start]A ge
 
 ---
 *(Esta seção será atualizada posteriormente)*
+---
+
 ## 4. Simulação de Mudança de Escopo
 
-[cite_start]*(Conforme o andamento do projeto, esta seção será preenchida para justificar a mudança de escopo simulada, conforme exigido pelo trabalho)*[cite: 20, 53].
+Durante o desenvolvimento (conforme Tarefa #8 do Kanban), o cliente (startup de logística) solicitou uma nova funcionalidade não prevista no escopo inicial: a capacidade de definir uma **Prioridade** (ex: Baixa, Média, Alta) para cada tarefa.
+
+[cite_start]**Justificativa:** Esta mudança é crucial para que a equipe de logística possa focar primeiro nas "tarefas críticas", alinhando-se melhor ao objetivo do projeto de "priorizar tarefas críticas"[cite: 7].
+
+**Impacto:** A mudança foi implementada atualizando a classe `Tarefa` e os métodos `criarTarefa` e `atualizarTarefa` do `TarefaService`. [cite_start]A nova feature foi registrada, implementada e documentada[cite: 53, 121].
